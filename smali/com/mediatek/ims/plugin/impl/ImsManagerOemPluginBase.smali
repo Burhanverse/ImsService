@@ -32,19 +32,21 @@
 .end method
 
 .method public updateImsServiceConfig(Landroid/content/Context;IZ)V
-    .locals 0
+    .locals 1
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "phoneId"    # I
+
+    # Unused parameter but kept for backwards compatibility.
     .param p3, "force"    # Z
 
     invoke-static {p1, p2}, Lcom/android/ims/ImsManager;->getInstance(Landroid/content/Context;I)Lcom/android/ims/ImsManager;
 
-    move-result-object p0
+    move-result-object v0
 
-    .local p0, "imsManager":Lcom/android/ims/ImsManager;
-    if-eqz p0, :cond_0
+    .local v0, "imsManager":Lcom/android/ims/ImsManager;
+    if-eqz v0, :cond_0
 
-    invoke-virtual {p0}, Lcom/android/ims/ImsManager;->updateImsServiceConfig()V
+    invoke-virtual {v0}, Lcom/android/ims/ImsManager;->updateImsServiceConfig()V
 
     :cond_0
     return-void
